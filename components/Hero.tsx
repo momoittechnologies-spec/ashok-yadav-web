@@ -168,14 +168,14 @@ export default function Hero() {
             Book Study Desk
           </a>
           <a
-            href="#quickprint"
+            href="#xerox"
             onClick={(e) => {
               e.preventDefault();
-              document.getElementById("quickprint")?.scrollIntoView({ behavior: "smooth" });
+              document.getElementById("xerox")?.scrollIntoView({ behavior: "smooth" });
             }}
             className="flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl bg-[#F59E0B] text-white font-bold text-sm hover:bg-[#D97706] shadow-md transition-all min-h-[48px]"
           >
-            QuickPrint Calculator ⚡
+            24/7 Xerox & Print 🖨️
           </a>
           <a
             href="#distance-education"

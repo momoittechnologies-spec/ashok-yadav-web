@@ -27,7 +27,7 @@ const NAV_LINKS = [
   { label: "Xerox & Print", href: "#xerox" },
   { label: "Distance Edu", href: "#distance-education" },
   { label: "Digital Studio", href: "#digital-studio" },
-  { label: "QuickPrint", href: "#quickprint" },
+  { label: "Materials", href: "#materials" },
   { label: "Reviews", href: "#reviews" },
   { label: "Location", href: "#location" },
 ];

@@ -120,14 +120,10 @@ export default function XeroxSection() {
           </div>
           <div className="mt-8 flex flex-col sm:flex-row gap-4">
             <a
-              href="#quickprint"
-              onClick={(e) => {
-                e.preventDefault();
-                document.getElementById("quickprint")?.scrollIntoView({ behavior: "smooth" });
-              }}
-              className="flex-1 flex items-center justify-center gap-2 py-3.5 rounded-xl bg-[#F59E0B] text-white font-bold text-sm hover:bg-[#D97706] transition-colors min-h-[48px]"
+              href="tel:+919963095103"
+              className="flex-1 flex items-center justify-center gap-2 py-3.5 rounded-xl bg-[#1E3A8A] text-white font-bold text-sm hover:bg-[#2563EB] transition-colors min-h-[48px]"
             >
-              ⚡ Use QuickPrint Calculator
+              📞 Call for Print Orders: 9963095103
             </a>
             <a
               href="https://wa.me/919963095103?text=Hi%2C%20I%20need%20Xerox%20%2F%20printing%20services.%20Please%20help%20me."

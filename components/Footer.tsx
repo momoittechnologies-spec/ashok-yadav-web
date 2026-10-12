@@ -87,7 +87,6 @@ export default function Footer() {
               <li><a href="#distance-education" className="hover:text-white transition-colors">Distance Education Admissions</a></li>
               <li><a href="#distance-education" className="hover:text-white transition-colors">C.LI.SC & B.LI.SC Library Courses</a></li>
               <li><a href="#digital-studio" className="hover:text-white transition-colors">Digital Classroom Studio (₹499/hr)</a></li>
-              <li><a href="#quickprint" className="hover:text-white transition-colors">QuickPrint Online Calculator</a></li>
               <li><a href="#materials" className="hover:text-white transition-colors">Exam Study Material Printing</a></li>
             </ul>
           </div>

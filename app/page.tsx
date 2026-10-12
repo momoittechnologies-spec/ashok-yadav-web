@@ -4,7 +4,6 @@ import StudyHall from "@/components/StudyHall";
 import XeroxSection from "@/components/XeroxSection";
 import DistanceEducation from "@/components/DistanceEducation";
 import DigitalStudio from "@/components/DigitalStudio";
-import QuickPrint from "@/components/QuickPrint";
 import Materials from "@/components/Materials";
 import Reviews from "@/components/Reviews";
 import Location from "@/components/Location";
@@ -21,7 +20,6 @@ export default function Home() {
         <XeroxSection />
         <DistanceEducation />
         <DigitalStudio />
-        <QuickPrint />
         <Materials />
         <Reviews />
         <Location />

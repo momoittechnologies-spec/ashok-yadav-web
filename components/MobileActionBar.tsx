@@ -1,6 +1,6 @@
 "use client";
 
-import { Phone, MessageCircle, Calculator } from "lucide-react";
+import { Phone, MessageCircle, MapPin } from "lucide-react";
 
 export default function MobileActionBar() {
   return (
@@ -24,12 +24,12 @@ export default function MobileActionBar() {
         </a>
         <button
           onClick={() =>
-            document.getElementById("quickprint")?.scrollIntoView({ behavior: "smooth" })
+            document.getElementById("location")?.scrollIntoView({ behavior: "smooth" })
           }
-          className="flex flex-col items-center justify-center py-3 gap-1 bg-[#F59E0B] text-white hover:bg-[#D97706] transition-colors min-h-[60px]"
+          className="flex flex-col items-center justify-center py-3 gap-1 bg-[#1E3A8A] text-white hover:bg-[#2563EB] transition-colors min-h-[60px]"
         >
-          <Calculator size={20} />
-          <span className="text-xs font-semibold">QuickPrint</span>
+          <MapPin size={20} />
+          <span className="text-xs font-semibold">Directions</span>
         </button>
       </div>
       {/* Safe area inset for iOS home indicator */}
