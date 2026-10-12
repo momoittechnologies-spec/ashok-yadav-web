@@ -2,6 +2,8 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import StudyHall from "@/components/StudyHall";
 import XeroxSection from "@/components/XeroxSection";
+import DistanceEducation from "@/components/DistanceEducation";
+import DigitalStudio from "@/components/DigitalStudio";
 import QuickPrint from "@/components/QuickPrint";
 import Materials from "@/components/Materials";
 import Reviews from "@/components/Reviews";
@@ -17,6 +19,8 @@ export default function Home() {
         <Hero />
         <StudyHall />
         <XeroxSection />
+        <DistanceEducation />
+        <DigitalStudio />
         <QuickPrint />
         <Materials />
         <Reviews />

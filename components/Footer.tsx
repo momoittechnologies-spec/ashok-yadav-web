@@ -1,9 +1,9 @@
 import { Phone, MessageCircle, MapPin, Clock } from "lucide-react";
 
-// Inline SVG for social icons not available in this lucide-react version
-function InstagramIcon() {
+// Inline SVG for social icons
+function InstagramIcon({ size = 16 }: { size?: number }) {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
       <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
       <circle cx="12" cy="12" r="4"/>
       <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
@@ -11,15 +11,13 @@ function InstagramIcon() {
   );
 }
 
-function FacebookIcon() {
+function FacebookIcon({ size = 16 }: { size?: number }) {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
       <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
     </svg>
   );
 }
-
-
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -33,36 +31,47 @@ export default function Footer() {
             <div className="mb-4">
               <div className="text-xl font-extrabold text-white">Ashok Yadav</div>
               <div className="text-[#F59E0B] font-semibold text-sm tracking-widest uppercase">
-                Study Hall & Xerox
+                Study Hall · Xerox · Distance Edu
               </div>
             </div>
-            <p className="text-slate-400 text-sm leading-relaxed mb-5">
-              Kadapa's most trusted study hall and xerox centre — serving students and
-              professionals since 2018 from Industrial Estate, RIMS Road.
+            <p className="text-slate-400 text-sm leading-relaxed mb-3">
+              Kadapa's most trusted educational hub — Study Hall, 24-Hour Xerox, Distance Education, and Digital Studio headed by <strong className="text-white">Dr. Ashok Yadav, MBA</strong>.
             </p>
+            <p className="text-slate-500 text-xs mb-5">
+              Serving students, aspirants, and professionals since 2018 at Industrial Estate, RIMS Road.
+            </p>
+
+            {/* Social Icons with Official Links */}
             <div className="flex gap-3">
               <a
                 href="https://wa.me/919963095103"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="WhatsApp"
+                title="Chat on WhatsApp"
                 className="w-9 h-9 rounded-lg bg-[#25D366] flex items-center justify-center hover:opacity-80 transition-opacity"
               >
                 <MessageCircle size={16} />
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/ashok_yadav_xerox_distance_edu/"
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="Instagram"
-                className="w-9 h-9 rounded-lg bg-slate-700 flex items-center justify-center hover:bg-slate-600 transition-colors"
+                title="Follow on Instagram (@ashok_yadav_xerox_distance_edu)"
+                className="w-9 h-9 rounded-lg bg-pink-600 flex items-center justify-center hover:bg-pink-700 transition-colors"
               >
-                <InstagramIcon />
+                <InstagramIcon size={16} />
               </a>
               <a
-                href="#"
+                href="https://www.facebook.com/AshokyadaXerox/"
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="Facebook"
-                className="w-9 h-9 rounded-lg bg-slate-700 flex items-center justify-center hover:bg-slate-600 transition-colors"
+                title="Follow on Facebook (@AshokyadaXerox)"
+                className="w-9 h-9 rounded-lg bg-[#1877F2] flex items-center justify-center hover:bg-blue-700 transition-colors"
               >
-              <FacebookIcon />
+                <FacebookIcon size={16} />
               </a>
             </div>
           </div>
@@ -73,24 +82,20 @@ export default function Footer() {
               Services
             </h4>
             <ul className="space-y-2.5 text-slate-400 text-sm">
-              {[
-                "Study Hall / Reading Room",
-                "Photocopying & Colour Xerox",
-                "Bulk Printing",
-                "Scanning & Document Services",
-                "Spiral & Book Binding",
-                "Stationery & Books",
-                "Exam Material Printing",
-              ].map((s) => (
-                <li key={s}>{s}</li>
-              ))}
+              <li><a href="#study-hall" className="hover:text-white transition-colors">Study Hall & Reading Rooms</a></li>
+              <li><a href="#xerox" className="hover:text-white transition-colors">24-Hour Photocopying & Printing</a></li>
+              <li><a href="#distance-education" className="hover:text-white transition-colors">Distance Education Admissions</a></li>
+              <li><a href="#distance-education" className="hover:text-white transition-colors">C.LI.SC & B.LI.SC Library Courses</a></li>
+              <li><a href="#digital-studio" className="hover:text-white transition-colors">Digital Classroom Studio (₹499/hr)</a></li>
+              <li><a href="#quickprint" className="hover:text-white transition-colors">QuickPrint Online Calculator</a></li>
+              <li><a href="#materials" className="hover:text-white transition-colors">Exam Study Material Printing</a></li>
             </ul>
           </div>
 
           {/* Hours */}
           <div>
             <h4 className="font-bold text-white mb-4 text-sm uppercase tracking-wider">
-              Hours
+              Operating Hours
             </h4>
             <div className="space-y-3 text-sm">
               <div className="flex items-start gap-2">
@@ -98,7 +103,7 @@ export default function Footer() {
                 <div>
                   <div className="text-slate-300 font-medium">Study Hall</div>
                   <div className="text-slate-400">5:00 AM – 11:00 PM</div>
-                  <div className="text-slate-500 text-xs">Monday – Sunday</div>
+                  <div className="text-slate-500 text-xs">Monday – Sunday (All 7 Days)</div>
                 </div>
               </div>
               <div className="flex items-start gap-2">
@@ -109,20 +114,27 @@ export default function Footer() {
                   <div className="text-slate-500 text-xs">Monday – Sunday</div>
                 </div>
               </div>
+              <div className="flex items-start gap-2">
+                <Clock size={14} className="text-blue-400 mt-0.5 flex-shrink-0" />
+                <div>
+                  <div className="text-slate-300 font-medium">Distance Edu & Studio</div>
+                  <div className="text-slate-400">9:00 AM – 9:00 PM</div>
+                  <div className="text-slate-500 text-xs">Consultation & Slot Bookings</div>
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* Contact */}
+          {/* Contact & Socials */}
           <div>
             <h4 className="font-bold text-white mb-4 text-sm uppercase tracking-wider">
-              Contact
+              Contact & Social
             </h4>
-            <div className="space-y-4 text-sm">
+            <div className="space-y-3.5 text-sm">
               <div className="flex items-start gap-2">
-                <MapPin size={14} className="text-[#1E3A8A] mt-0.5 flex-shrink-0" style={{ color: "#60A5FA" }} />
+                <MapPin size={14} className="text-blue-400 mt-0.5 flex-shrink-0" />
                 <span className="text-slate-400">
-                  Industrial Estate, RIMS Road,<br />
-                  Kadapa – 516004, AP
+                  D.No. 43, Industrial Estate, RIMS Road, Kadapa – 516004, AP
                 </span>
               </div>
               <a
@@ -130,7 +142,7 @@ export default function Footer() {
                 className="flex items-center gap-2 text-slate-300 hover:text-white transition-colors"
               >
                 <Phone size={14} className="text-blue-400" />
-                +91 99630 95103
+                +91 99630 95103 (Dr. Ashok Yadav)
               </a>
               <a
                 href="https://wa.me/919963095103"
@@ -139,7 +151,25 @@ export default function Footer() {
                 className="flex items-center gap-2 text-slate-300 hover:text-[#25D366] transition-colors"
               >
                 <MessageCircle size={14} className="text-[#25D366]" />
-                WhatsApp Us
+                WhatsApp: 9963095103
+              </a>
+              <a
+                href="https://www.instagram.com/ashok_yadav_xerox_distance_edu/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-slate-300 hover:text-pink-400 transition-colors text-xs"
+              >
+                <InstagramIcon size={14} />
+                Instagram: @ashok_yadav_xerox_distance_edu
+              </a>
+              <a
+                href="https://www.facebook.com/AshokyadaXerox/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-slate-300 hover:text-[#1877F2] transition-colors text-xs"
+              >
+                <FacebookIcon size={14} />
+                Facebook: /AshokyadaXerox
               </a>
             </div>
           </div>
@@ -148,13 +178,13 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-slate-800 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <span>
-            © {year} Ashok Yadav Study Hall & Xerox, Kadapa. All rights reserved.
+            © {year} Ashok Yadav Study Hall, Xerox & Distance Education, Kadapa. All rights reserved.
           </span>
           <span>
             Designed & developed by{" "}
             <a
               href="mailto:momoit.technologies@gmail.com"
-              className="text-slate-400 hover:text-white transition-colors"
+              className="text-slate-400 hover:text-white transition-colors font-semibold"
             >
               Momo IT Technologies
             </a>

@@ -9,27 +9,31 @@ const geistSans = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "Ashok Yadav Study Hall & Xerox | Kadapa, Andhra Pradesh",
+  title: "Ashok Yadav Study Hall, Xerox & Distance Education | Kadapa",
   description:
-    "Kadapa's premier study hall & xerox centre at Industrial Estate, RIMS Road. Dedicated study desks, AC reading rooms, high-speed Wi-Fi, photocopying, colour printing, spiral binding & stationery. Open 5 AM–11 PM daily. Call +91 99630 95103.",
+    "Kadapa's premier educational center headed by Dr. Ashok Yadav, MBA. Study hall (5 AM–11 PM), 24-Hour Xerox & printing, Andhra University & Acharya Nagarjuna University Distance Education (C.LI.SC, B.LI.SC, Degree, PG), and Smart Digital Studio rental (₹499/hr) at Industrial Estate, RIMS Road. Call +91 99630 95103.",
   keywords: [
-    "study hall kadapa",
-    "reading room kadapa",
-    "xerox kadapa",
     "ashok yadav study hall",
     "ashok yadav xerox",
+    "ashok yadav distance education",
+    "dr ashok yadav kadapa",
+    "study hall kadapa",
+    "reading room kadapa",
+    "xerox kadapa rims road",
+    "andhra university distance education kadapa",
+    "clisc library course kadapa",
+    "blisc distance education kadapa",
+    "digital classroom studio kadapa",
+    "recording studio kadapa",
     "best study hall in kadapa",
-    "xerox near rims road kadapa",
-    "spiral binding kadapa",
-    "colour printing kadapa",
-    "APPSC study material kadapa",
   ],
   openGraph: {
-    title: "Ashok Yadav Study Hall & Xerox | Kadapa",
+    title: "Ashok Yadav Study Hall, Xerox & Distance Education | Kadapa",
     description:
-      "5★ rated study hall & xerox centre in Kadapa. Quiet AC desks, fast printing, binding & stationery.",
+      "Study Hall (5 AM–11 PM), 24-Hour Xerox, Distance Education Admissions (Andhra University & ANU), and Digital Recording Studio (₹499/hr) in Kadapa.",
     locale: "en_IN",
     type: "website",
+    url: "https://ashok-yadav-web.vercel.app",
   },
 };
 
