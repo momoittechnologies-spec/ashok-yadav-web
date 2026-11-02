@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import {
   Clock,
@@ -166,23 +167,20 @@ export default function Hero() {
             <h1 className="flex flex-col items-center lg:items-start leading-tight mb-4 w-full">
               <span className="sr-only">శ్రీ అశోక్ యాదవ్ (Ashok Yadav) - Study Hall & Education Hub Kadapa</span>
               
-              {/* Telugu Hero Brand Title (Live Styled 3D Text) */}
-              <div className="relative inline-block hero-telugu-title text-3xl min-[400px]:text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl mb-1 sm:mb-2 select-text hover:scale-[1.015] transition-transform duration-300">
-                {/* 3D Black Stroke & Bevel Shadow Layer */}
-                <span
-                  aria-hidden="true"
-                  className="absolute inset-0 select-none text-black hero-telugu-stroke pointer-events-none"
-                >
-                  శ్రీ అశోక్ యాదవ్
-                </span>
-                {/* High-Gloss White-to-Golden-Yellow Gradient Text Layer */}
-                <span className="relative block hero-telugu-fill">
-                  శ్రీ అశోక్ యాదవ్
-                </span>
+              {/* Authentic Telugu Brand Logo (శ్రీ అశోక్ యాదవ్) */}
+              <div className="relative w-full max-w-[320px] xs:max-w-[360px] sm:max-w-[440px] md:max-w-[500px] lg:max-w-[540px] xl:max-w-[580px] flex justify-center lg:justify-start mb-2 sm:mb-3">
+                <Image
+                  src="/images/sri-ashok-yadav-telugu.png"
+                  alt="శ్రీ అశోక్ యాదవ్ - Ashok Yadav"
+                  width={967}
+                  height={208}
+                  priority
+                  className="w-full h-auto object-contain filter drop-shadow-[0_4px_12px_rgba(0,0,0,0.12)] hover:scale-[1.01] transition-transform duration-300"
+                />
               </div>
 
               {/* Main Heading with Subtle Complementary Amber Stroke & Depth */}
-              <span className="heading-brand-stroke block text-xl min-[380px]:text-2xl sm:text-4xl md:text-5xl xl:text-6xl font-black tracking-tight leading-tight max-w-full">
+              <span className="heading-brand-stroke block text-2xl sm:text-4xl md:text-5xl xl:text-6xl font-black tracking-tight leading-tight">
                 Study Hall & Education Hub
               </span>
             </h1>
