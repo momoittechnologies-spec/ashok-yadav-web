@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { Clock, Star, Phone, MessageCircle, MapPin, ChevronDown, Award } from "lucide-react";
 
 // Inline SVG for social icons
@@ -100,10 +101,21 @@ export default function Hero() {
         </div>
 
         {/* Headline */}
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-[#1E3A8A] leading-tight mb-4">
-          Ashok Yadav
-          <br />
-          <span className="text-[#F59E0B]">Study Hall & Education Hub</span>
+        <h1 className="flex flex-col items-center justify-center leading-tight mb-4">
+          <span className="sr-only">శ్రీ అశోక్ యాదవ్ (Ashok Yadav)</span>
+          <div className="relative w-full max-w-[320px] sm:max-w-[460px] md:max-w-[560px] lg:max-w-[620px] flex justify-center py-1 sm:py-2">
+            <Image
+              src="/images/sri-ashok-yadav-telugu.png"
+              alt="శ్రీ అశోక్ యాదవ్ - Ashok Yadav"
+              width={973}
+              height={201}
+              priority
+              className="w-full h-auto object-contain filter drop-shadow-[0_6px_16px_rgba(0,0,0,0.12)] hover:scale-[1.02] transition-transform duration-300"
+            />
+          </div>
+          <span className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#F59E0B] mt-2 tracking-tight text-center">
+            Study Hall & Education Hub
+          </span>
         </h1>
         <p className="text-base sm:text-xl text-slate-600 font-medium mb-3 max-w-2xl">
           Study Hall · 24-Hour Xerox · Distance Education · Digital Classroom Studio
