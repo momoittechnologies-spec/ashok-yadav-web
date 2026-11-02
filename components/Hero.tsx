@@ -2,7 +2,20 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { Clock, Star, Phone, MessageCircle, MapPin, ChevronDown, Award } from "lucide-react";
+import {
+  Clock,
+  Star,
+  Phone,
+  MessageCircle,
+  MapPin,
+  Award,
+  BookOpen,
+  Printer,
+  GraduationCap,
+  Video,
+  ArrowRight,
+  ChevronDown,
+} from "lucide-react";
 
 // Inline SVG for social icons
 function InstagramIcon({ size = 15 }: { size?: number }) {
@@ -52,6 +65,49 @@ function getNextEventLabel(): string {
   }
 }
 
+const QUICK_SERVICES = [
+  {
+    title: "AC Study Hall & Reading Rooms",
+    badge: "5 AM – 11 PM",
+    badgeColor: "bg-blue-100 text-[#1E3A8A]",
+    desc: "AC cabins, 100% power backup & high-speed Wi-Fi for APPSC, UPSC & SI aspirants.",
+    icon: BookOpen,
+    iconColor: "text-[#1E3A8A]",
+    iconBg: "bg-blue-50",
+    href: "#study-hall",
+  },
+  {
+    title: "24-Hour Xerox & Jumbo Print",
+    badge: "24/7 Daily",
+    badgeColor: "bg-amber-100 text-amber-800",
+    desc: "B&W / Colour photocopying, spiral binding & competitive exam notes pickup.",
+    icon: Printer,
+    iconColor: "text-amber-600",
+    iconBg: "bg-amber-50",
+    href: "#xerox",
+  },
+  {
+    title: "Distance Education Hub",
+    badge: "AU & ANU Official",
+    badgeColor: "bg-emerald-100 text-emerald-800",
+    desc: "Andhra Univ Special Drive 2026, C.LI.SC (3-month Library Science) & Degrees.",
+    icon: GraduationCap,
+    iconColor: "text-emerald-600",
+    iconBg: "bg-emerald-50",
+    href: "#distance-education",
+  },
+  {
+    title: "Smart Digital Classroom Studio",
+    badge: "₹499 / Hour",
+    badgeColor: "bg-purple-100 text-purple-800",
+    desc: "Interactive digital board, 4K camera & studio lighting for YouTube & online tutors.",
+    icon: Video,
+    iconColor: "text-purple-600",
+    iconBg: "bg-purple-50",
+    href: "#digital-studio",
+  },
+];
+
 export default function Hero() {
   const [open, setOpen] = useState(false);
   const [timeLabel, setTimeLabel] = useState("");
@@ -66,190 +122,227 @@ export default function Hero() {
     return () => clearInterval(id);
   }, []);
 
-  const handleScrollDown = () => {
-    document.getElementById("study-hall")?.scrollIntoView({ behavior: "smooth" });
+  const handleScrollTo = (id: string) => {
+    const el = document.querySelector(id);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50 pt-20">
-      {/* Background decorative elements */}
-      <div className="absolute top-0 right-0 w-72 h-72 sm:w-96 sm:h-96 bg-[#1E3A8A]/5 rounded-full -translate-y-1/2 translate-x-1/4 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#F59E0B]/8 rounded-full translate-y-1/2 -translate-x-1/4 blur-3xl pointer-events-none" />
+    <section className="relative min-h-[92vh] flex flex-col justify-center overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50/40 pt-24 pb-12 sm:pb-16 lg:pt-28 lg:pb-20">
+      {/* Background ambient lighting */}
+      <div className="absolute top-0 right-0 w-96 h-96 lg:w-[32rem] lg:h-[32rem] bg-[#1E3A8A]/5 rounded-full -translate-y-1/3 translate-x-1/4 blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-80 h-80 lg:w-[28rem] lg:h-[28rem] bg-[#F59E0B]/8 rounded-full translate-y-1/3 -translate-x-1/4 blur-3xl pointer-events-none" />
 
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 flex flex-col items-center text-center">
-        {/* Leadership & Live Status Row */}
-        <div className="flex flex-wrap items-center justify-center gap-3 mb-6">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-blue-100/70 border border-blue-200 text-[#1E3A8A] text-xs font-bold">
-            <Award size={14} className="text-[#1E3A8A]" /> Led by Dr. Ashok Yadav, MBA
-          </div>
+      <div className="relative max-w-7xl 2xl:max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 w-full">
+        {/* Main 2-Column Desktop Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-14 items-center">
+          {/* Left Column: Brand, Title, Credentials, Trust & Direct Actions */}
+          <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left">
+            {/* Leadership & Operating Live Status Row */}
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5 mb-5">
+              <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-blue-100/70 border border-blue-200/80 text-[#1E3A8A] text-xs font-bold shadow-xs">
+                <Award size={14} className="text-[#1E3A8A]" />
+                <span>Led by Dr. Ashok Yadav, MBA</span>
+              </div>
 
-          <div
-            className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold shadow-sm border ${
-              open
-                ? "bg-emerald-50 border-emerald-200 text-emerald-700"
-                : "bg-rose-50 border-rose-200 text-rose-700"
-            }`}
-          >
-            <span
-              className={`w-2 h-2 rounded-full ${
-                open ? "bg-emerald-500 animate-pulse" : "bg-rose-400"
-              }`}
-            />
-            {open ? "🟢 Open Now (5 AM – 11 PM)" : "🔴 Closed Right Now"}
-            <span className="font-normal opacity-80">· {timeLabel}</span>
-          </div>
-        </div>
-
-        {/* Headline */}
-        <h1 className="flex flex-col items-center justify-center leading-tight mb-4">
-          <span className="sr-only">శ్రీ అశోక్ యాదవ్ (Ashok Yadav)</span>
-          <div className="relative w-full max-w-[320px] sm:max-w-[460px] md:max-w-[560px] lg:max-w-[620px] flex justify-center py-1 sm:py-2">
-            <Image
-              src="/images/sri-ashok-yadav-telugu.png"
-              alt="శ్రీ అశోక్ యాదవ్ - Ashok Yadav"
-              width={973}
-              height={201}
-              priority
-              className="w-full h-auto object-contain filter drop-shadow-[0_6px_16px_rgba(0,0,0,0.12)] hover:scale-[1.02] transition-transform duration-300"
-            />
-          </div>
-          <span className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#F59E0B] mt-2 tracking-tight text-center">
-            Study Hall & Education Hub
-          </span>
-        </h1>
-        <p className="text-base sm:text-xl text-slate-600 font-medium mb-3 max-w-2xl">
-          Study Hall · 24-Hour Xerox · Distance Education · Digital Classroom Studio
-        </p>
-        <div className="flex items-center justify-center gap-1 text-slate-500 text-xs sm:text-sm mb-6">
-          <MapPin size={14} className="text-[#1E3A8A]" />
-          Industrial Estate, RIMS Road, Kadapa, Andhra Pradesh – 516004
-        </div>
-
-        {/* Social Follow Badges */}
-        <div className="flex flex-wrap items-center justify-center gap-3 mb-8">
-          <a
-            href="https://www.instagram.com/ashok_yadav_xerox_distance_edu/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-pink-500 to-rose-500 text-white text-xs font-bold hover:opacity-90 shadow-sm transition-opacity"
-          >
-            <InstagramIcon size={14} /> @ashok_yadav_xerox_distance_edu
-          </a>
-          <a
-            href="https://www.facebook.com/AshokyadaXerox/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#1877F2] text-white text-xs font-bold hover:opacity-90 shadow-sm transition-opacity"
-          >
-            <FacebookIcon size={14} /> Facebook Page
-          </a>
-        </div>
-
-        {/* Rating Row */}
-        <div className="flex flex-wrap items-center justify-center gap-4 mb-10">
-          <div className="flex items-center gap-2 bg-white rounded-xl px-4 py-2.5 shadow-sm border border-slate-200">
-            <div className="flex">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} size={14} className="fill-[#F59E0B] text-[#F59E0B]" />
-              ))}
+              <div
+                className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold shadow-xs border ${
+                  open
+                    ? "bg-emerald-50 border-emerald-200 text-emerald-700"
+                    : "bg-rose-50 border-rose-200 text-rose-700"
+                }`}
+              >
+                <span
+                  className={`w-2 h-2 rounded-full ${
+                    open ? "bg-emerald-500 animate-pulse" : "bg-rose-400"
+                  }`}
+                />
+                <span className="font-bold">{open ? "Open Now (5 AM – 11 PM)" : "Closed Right Now"}</span>
+                <span className="font-normal opacity-85">· {timeLabel}</span>
+              </div>
             </div>
-            <span className="font-bold text-slate-900 text-sm">5.0</span>
-            <span className="text-slate-500 text-xs">Study Hall (92)</span>
-          </div>
-          <div className="flex items-center gap-2 bg-white rounded-xl px-4 py-2.5 shadow-sm border border-slate-200">
-            <div className="flex">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} size={14} className="fill-[#F59E0B] text-[#F59E0B]" />
-              ))}
+
+            {/* Business Logo & Main Headline */}
+            <h1 className="flex flex-col items-center lg:items-start leading-tight mb-4 w-full">
+              <span className="sr-only">శ్రీ అశోక్ యాదవ్ (Ashok Yadav) - Study Hall & Education Hub Kadapa</span>
+              <div className="relative w-full max-w-[320px] sm:max-w-[420px] md:max-w-[480px] lg:max-w-[520px] xl:max-w-[560px] flex justify-center lg:justify-start py-1">
+                <Image
+                  src="/images/sri-ashok-yadav-telugu.png"
+                  alt="శ్రీ అశోక్ యాదవ్ - Ashok Yadav"
+                  width={973}
+                  height={201}
+                  priority
+                  className="w-full h-auto object-contain filter drop-shadow-[0_6px_16px_rgba(0,0,0,0.12)] hover:scale-[1.01] transition-transform duration-300"
+                />
+              </div>
+              <span className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-black text-[#F59E0B] mt-2 tracking-tight">
+                Study Hall & Education Hub
+              </span>
+            </h1>
+
+            {/* Value Proposition Subtitle */}
+            <p className="text-base sm:text-lg lg:text-xl text-slate-600 font-medium leading-relaxed mb-4 max-w-2xl">
+              Kadapa's premier integrated center for 5 AM–11 PM AC study halls, 24-hour Xerox & large-scale printing, official AU & ANU distance admissions, and modern 4K digital recording studio.
+            </p>
+
+            {/* Address Badge with Pin */}
+            <div className="flex items-center gap-1.5 text-slate-500 text-xs sm:text-sm mb-6 bg-slate-100/70 border border-slate-200/60 px-3.5 py-1.5 rounded-xl">
+              <MapPin size={15} className="text-[#1E3A8A] flex-shrink-0" />
+              <span>D.No. 43, Industrial Estate, RIMS Road, Kadapa, AP – 516004</span>
             </div>
-            <span className="font-bold text-slate-900 text-sm">4.9</span>
-            <span className="text-slate-500 text-xs">Xerox (1,384+)</span>
+
+            {/* Trust Proof & Social Row */}
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-4 mb-8">
+              {/* Study Hall Rating */}
+              <div className="flex items-center gap-2 bg-white rounded-xl px-3.5 py-2 shadow-xs border border-slate-200">
+                <div className="flex">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} size={13} className="fill-[#F59E0B] text-[#F59E0B]" />
+                  ))}
+                </div>
+                <span className="font-extrabold text-slate-900 text-xs sm:text-sm">5.0</span>
+                <span className="text-slate-500 text-xs">Study Hall (92)</span>
+              </div>
+
+              {/* Xerox Rating */}
+              <div className="flex items-center gap-2 bg-white rounded-xl px-3.5 py-2 shadow-xs border border-slate-200">
+                <div className="flex">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} size={13} className="fill-[#F59E0B] text-[#F59E0B]" />
+                  ))}
+                </div>
+                <span className="font-extrabold text-slate-900 text-xs sm:text-sm">4.9</span>
+                <span className="text-slate-500 text-xs">Xerox (1,384+)</span>
+              </div>
+
+              {/* Social Channels */}
+              <div className="flex items-center gap-2">
+                <a
+                  href="https://www.instagram.com/ashok_yadav_xerox_distance_edu/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-gradient-to-r from-pink-500 to-rose-500 text-white text-xs font-bold hover:opacity-90 shadow-xs transition-opacity"
+                >
+                  <InstagramIcon size={13} />
+                  <span>Instagram</span>
+                </a>
+                <a
+                  href="https://www.facebook.com/AshokyadaXerox/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-[#1877F2] text-white text-xs font-bold hover:opacity-90 shadow-xs transition-opacity"
+                >
+                  <FacebookIcon size={13} />
+                  <span>Facebook</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Direct Action Call & WhatsApp Row */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto mb-4">
+              <a
+                href="tel:+919963095103"
+                className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#1E3A8A] text-white font-bold text-sm hover:bg-[#2563EB] shadow-sm hover:shadow-md transition-all min-h-[48px]"
+              >
+                <Phone size={16} />
+                <span>Call: +91 99630 95103</span>
+              </a>
+
+              <a
+                href="https://wa.me/919963095103?text=Hi%2C%20I%20want%20to%20enquire%20about%20Ashok%20Yadav%20Study%20Hall%20%2F%20Education%20Hub%20services."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#25D366] text-white font-bold text-sm hover:bg-[#128C7E] shadow-sm hover:shadow-md transition-all min-h-[48px]"
+              >
+                <MessageCircle size={16} />
+                <span>WhatsApp Enquiry</span>
+              </a>
+            </div>
+
+            {/* Timing Note */}
+            <div className="flex items-center gap-2 text-slate-500 text-xs sm:text-sm mt-1">
+              <Clock size={14} className="text-[#1E3A8A]" />
+              <span>
+                Study Hall: <strong className="text-slate-700">5 AM – 11 PM</strong> · Xerox:{" "}
+                <strong className="text-slate-700">24 Hours Daily</strong>
+              </span>
+            </div>
+          </div>
+
+          {/* Right Column: Interactive Quick-Service Portal Hub */}
+          <div className="lg:col-span-5 w-full">
+            <div className="bg-white/95 backdrop-blur-md rounded-3xl p-5 sm:p-7 border border-slate-200/90 shadow-xl relative overflow-hidden">
+              <div className="flex items-center justify-between pb-4 mb-4 border-b border-slate-100">
+                <div>
+                  <h2 className="text-base sm:text-lg font-extrabold text-slate-900">
+                    Quick Service Directory
+                  </h2>
+                  <p className="text-xs text-slate-500">
+                    Select a service to view full details & pricing
+                  </p>
+                </div>
+                <span className="text-[11px] font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full border border-blue-100">
+                  Kadapa Hub
+                </span>
+              </div>
+
+              {/* Service Cards Stack */}
+              <div className="space-y-3">
+                {QUICK_SERVICES.map((s) => (
+                  <button
+                    key={s.title}
+                    onClick={() => handleScrollTo(s.href)}
+                    className="w-full flex items-start gap-3.5 p-3.5 rounded-2xl bg-slate-50 hover:bg-blue-50/50 border border-slate-200/70 hover:border-[#1E3A8A]/30 transition-all text-left group cursor-pointer"
+                  >
+                    <div className={`w-11 h-11 rounded-xl ${s.iconBg} flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform`}>
+                      <s.icon size={20} className={s.iconColor} />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center justify-between gap-2 mb-1">
+                        <h3 className="font-bold text-slate-900 text-sm group-hover:text-[#1E3A8A] transition-colors truncate">
+                          {s.title}
+                        </h3>
+                        <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full whitespace-nowrap ${s.badgeColor}`}>
+                          {s.badge}
+                        </span>
+                      </div>
+                      <p className="text-slate-500 text-xs line-clamp-2 leading-relaxed">
+                        {s.desc}
+                      </p>
+                    </div>
+                    <ArrowRight size={15} className="text-slate-400 group-hover:text-[#1E3A8A] group-hover:translate-x-0.5 transition-all mt-1 flex-shrink-0" />
+                  </button>
+                ))}
+              </div>
+
+              {/* Card Footer Banner */}
+              <div className="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between gap-3 text-xs">
+                <span className="text-slate-500">Need immediate help?</span>
+                <a
+                  href="https://wa.me/919963095103?text=Hi%2C%20I%20am%20looking%20for%20admissions%20or%20desk%20booking%20at%20Ashok%20Yadav%20Study%20Hall."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-bold text-emerald-600 hover:text-emerald-700 inline-flex items-center gap-1"
+                >
+                  <MessageCircle size={13} />
+                  <span>Instant WhatsApp Chat →</span>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* CTA Buttons */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 w-full max-w-3xl mb-8">
-          <a
-            href="#study-hall"
-            onClick={(e) => {
-              e.preventDefault();
-              document.getElementById("study-hall")?.scrollIntoView({ behavior: "smooth" });
-            }}
-            className="flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl bg-[#1E3A8A] text-white font-bold text-sm hover:bg-[#2563EB] shadow-md transition-all min-h-[48px]"
+        {/* Scroll Indicator */}
+        <div className="mt-10 lg:mt-14 flex justify-center">
+          <button
+            onClick={() => handleScrollTo("#study-hall")}
+            aria-label="Scroll to services"
+            className="flex flex-col items-center gap-1 text-slate-400 hover:text-[#1E3A8A] transition-colors cursor-pointer group"
           >
-            Book Study Desk
-          </a>
-          <a
-            href="#xerox"
-            onClick={(e) => {
-              e.preventDefault();
-              document.getElementById("xerox")?.scrollIntoView({ behavior: "smooth" });
-            }}
-            className="flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl bg-[#F59E0B] text-white font-bold text-sm hover:bg-[#D97706] shadow-md transition-all min-h-[48px]"
-          >
-            24/7 Xerox & Print 🖨️
-          </a>
-          <a
-            href="#distance-education"
-            onClick={(e) => {
-              e.preventDefault();
-              document.getElementById("distance-education")?.scrollIntoView({ behavior: "smooth" });
-            }}
-            className="flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl bg-emerald-600 text-white font-bold text-sm hover:bg-emerald-700 shadow-md transition-all min-h-[48px]"
-          >
-            Distance Admissions 🎓
-          </a>
-          <a
-            href="#digital-studio"
-            onClick={(e) => {
-              e.preventDefault();
-              document.getElementById("digital-studio")?.scrollIntoView({ behavior: "smooth" });
-            }}
-            className="flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl bg-purple-700 text-white font-bold text-sm hover:bg-purple-800 shadow-md transition-all min-h-[48px]"
-          >
-            Digital Studio (₹499/hr) 🎬
-          </a>
+            <span className="text-xs font-semibold tracking-wide">Explore All Facilities & Admission Details</span>
+            <ChevronDown size={18} className="animate-bounce group-hover:text-[#1E3A8A]" />
+          </button>
         </div>
-
-        {/* Operating Hours Info */}
-        <div className="flex items-center gap-2 text-slate-500 text-xs sm:text-sm">
-          <Clock size={14} />
-          <span>
-            Study Hall: <strong className="text-slate-700">5:00 AM – 11:00 PM</strong> · Xerox:{" "}
-            <strong className="text-slate-700">24 Hours Daily</strong>
-          </span>
-        </div>
-
-        {/* Contact quick row */}
-        <div className="flex items-center gap-4 mt-3">
-          <a
-            href="tel:+919963095103"
-            className="flex items-center gap-1.5 text-[#1E3A8A] font-semibold text-sm hover:underline"
-          >
-            <Phone size={14} />
-            +91 99630 95103
-          </a>
-          <span className="text-slate-300">|</span>
-          <a
-            href="https://wa.me/919963095103"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1.5 text-[#25D366] font-semibold text-sm hover:underline"
-          >
-            <MessageCircle size={14} />
-            WhatsApp Chat
-          </a>
-        </div>
-
-        {/* Scroll down indicator */}
-        <button
-          onClick={handleScrollDown}
-          aria-label="Scroll to services"
-          className="mt-12 flex flex-col items-center gap-1 text-slate-400 hover:text-[#1E3A8A] transition-colors cursor-pointer"
-        >
-          <span className="text-xs">Explore All Services</span>
-          <ChevronDown size={20} className="animate-bounce" />
-        </button>
       </div>
     </section>
   );

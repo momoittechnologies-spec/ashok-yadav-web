@@ -53,106 +53,122 @@ export default function Navbar() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-white/95 backdrop-blur-md shadow-md border-b border-slate-200"
-            : "bg-white/80 backdrop-blur-sm"
+            ? "bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-200"
+            : "bg-white/85 backdrop-blur-sm border-b border-slate-100"
         }`}
       >
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 md:h-20">
-            {/* Logo */}
-            <div className="flex flex-col leading-tight cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-              <span className="text-[#1E3A8A] font-extrabold text-base sm:text-lg tracking-tight">
-                Ashok Yadav
-              </span>
-              <span className="text-[#F59E0B] font-semibold text-xs sm:text-sm tracking-widest uppercase">
-                Study Hall · Xerox · Distance Edu
-              </span>
+        <div className="max-w-7xl 2xl:max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+          <div className="flex items-center justify-between h-18 md:h-20 gap-4">
+            {/* Logo & Brand Identity */}
+            <div
+              className="flex items-center gap-3 cursor-pointer group flex-shrink-0"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            >
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#1E3A8A] to-blue-700 text-white flex items-center justify-center font-black text-base shadow-sm group-hover:scale-105 transition-transform flex-shrink-0">
+                AY
+              </div>
+              <div className="flex flex-col leading-tight">
+                <div className="flex items-center gap-2">
+                  <span className="text-[#1E3A8A] font-extrabold text-base sm:text-lg tracking-tight group-hover:text-blue-700 transition-colors">
+                    Ashok Yadav
+                  </span>
+                  <span className="hidden sm:inline-flex text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-blue-100/70 text-[#1E3A8A] border border-blue-200/60">
+                    Kadapa
+                  </span>
+                </div>
+                <span className="text-[#F59E0B] font-semibold text-xs tracking-wider uppercase">
+                  Study Hall · Xerox · Distance Edu
+                </span>
+              </div>
             </div>
 
-            {/* Desktop Nav */}
-            <nav className="hidden lg:flex items-center gap-5">
+            {/* Desktop Navigation Links */}
+            <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
               {NAV_LINKS.map((link) => (
                 <button
                   key={link.href}
                   onClick={() => handleNavClick(link.href)}
-                  className="text-slate-600 hover:text-[#1E3A8A] font-medium text-xs xl:text-sm transition-colors cursor-pointer"
+                  className="text-slate-600 hover:text-[#1E3A8A] hover:bg-slate-100/80 font-medium text-xs xl:text-sm px-3 py-2 rounded-lg transition-all cursor-pointer whitespace-nowrap"
                 >
                   {link.label}
                 </button>
               ))}
             </nav>
 
-            {/* Social Icons & CTA Buttons (desktop) */}
-            <div className="hidden lg:flex items-center gap-2 xl:gap-3">
-              {/* Instagram */}
-              <a
-                href="https://www.instagram.com/ashok_yadav_xerox_distance_edu/"
-                target="_blank"
-                rel="noopener noreferrer"
-                title="Follow on Instagram"
-                aria-label="Instagram"
-                className="w-8 h-8 rounded-lg bg-pink-50 text-pink-600 hover:bg-pink-600 hover:text-white flex items-center justify-center transition-colors"
-              >
-                <InstagramIcon size={16} />
-              </a>
+            {/* Desktop Quick Actions & Social Icons */}
+            <div className="hidden lg:flex items-center gap-2 xl:gap-3 flex-shrink-0">
+              {/* Social Icons */}
+              <div className="flex items-center gap-1.5 pr-2 border-r border-slate-200">
+                <a
+                  href="https://www.instagram.com/ashok_yadav_xerox_distance_edu/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="Follow on Instagram"
+                  aria-label="Instagram"
+                  className="w-8 h-8 rounded-lg bg-pink-50 text-pink-600 hover:bg-pink-600 hover:text-white flex items-center justify-center transition-colors"
+                >
+                  <InstagramIcon size={15} />
+                </a>
+                <a
+                  href="https://www.facebook.com/AshokyadaXerox/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="Follow on Facebook"
+                  aria-label="Facebook"
+                  className="w-8 h-8 rounded-lg bg-blue-50 text-[#1877F2] hover:bg-[#1877F2] hover:text-white flex items-center justify-center transition-colors"
+                >
+                  <FacebookIcon size={15} />
+                </a>
+              </div>
 
-              {/* Facebook */}
-              <a
-                href="https://www.facebook.com/AshokyadaXerox/"
-                target="_blank"
-                rel="noopener noreferrer"
-                title="Follow on Facebook"
-                aria-label="Facebook"
-                className="w-8 h-8 rounded-lg bg-blue-50 text-[#1877F2] hover:bg-[#1877F2] hover:text-white flex items-center justify-center transition-colors"
-              >
-                <FacebookIcon size={16} />
-              </a>
-
+              {/* Call Now */}
               <a
                 href="tel:+919963095103"
-                className="flex items-center gap-1.5 px-3 py-2 rounded-lg border-2 border-[#1E3A8A] text-[#1E3A8A] font-semibold text-xs xl:text-sm hover:bg-[#1E3A8A] hover:text-white transition-colors"
+                className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-slate-200 bg-white text-slate-800 font-semibold text-xs xl:text-sm hover:border-[#1E3A8A] hover:text-[#1E3A8A] hover:bg-blue-50/50 shadow-sm transition-all"
               >
-                <Phone size={14} />
-                Call Now
+                <Phone size={14} className="text-[#1E3A8A]" />
+                <span>Call Now</span>
               </a>
+
+              {/* WhatsApp */}
               <a
                 href="https://wa.me/919963095103?text=Hi%2C%20I%20want%20to%20enquire%20about%20Ashok%20Yadav%20Study%20Hall%20%2F%20Distance%20Education%20services"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-[#25D366] text-white font-semibold text-xs xl:text-sm hover:bg-[#128C7E] transition-colors"
+                className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#25D366] text-white font-semibold text-xs xl:text-sm hover:bg-[#128C7E] shadow-sm hover:shadow transition-all"
               >
-                <MessageCircle size={14} />
-                WhatsApp
+                <MessageCircle size={15} />
+                <span>WhatsApp</span>
               </a>
             </div>
 
-            {/* Mobile hamburger */}
+            {/* Mobile Hamburger Menu Toggle */}
             <button
               onClick={() => setOpen(!open)}
               aria-label="Toggle navigation menu"
-              className="lg:hidden p-2 rounded-lg text-slate-700 hover:bg-slate-100 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
+              className="lg:hidden p-2 rounded-xl text-slate-700 hover:bg-slate-100 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
             >
               {open ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
         </div>
 
-        {/* Mobile Nav Drawer */}
+        {/* Mobile Navigation Drawer */}
         {open && (
-          <div className="lg:hidden bg-white border-t border-slate-200 shadow-lg max-h-[85vh] overflow-y-auto">
-            <div className="max-w-6xl mx-auto px-4 py-4 flex flex-col gap-1">
+          <div className="lg:hidden bg-white border-t border-slate-200 shadow-xl max-h-[85vh] overflow-y-auto">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex flex-col gap-1">
               {NAV_LINKS.map((link) => (
                 <button
                   key={link.href}
                   onClick={() => handleNavClick(link.href)}
-                  className="text-left px-4 py-2.5 rounded-lg text-slate-700 hover:bg-slate-50 hover:text-[#1E3A8A] font-medium text-base transition-colors min-h-[44px]"
+                  className="text-left px-4 py-2.5 rounded-xl text-slate-700 hover:bg-slate-50 hover:text-[#1E3A8A] font-medium text-base transition-colors min-h-[44px]"
                 >
                   {link.label}
                 </button>
               ))}
 
               {/* Social Media Row in Mobile */}
-              <div className="flex items-center gap-3 px-4 py-2 my-1 border-t border-slate-100">
+              <div className="flex items-center gap-3 px-4 py-3 my-1 border-t border-slate-100">
                 <span className="text-xs font-semibold text-slate-500">Follow Us:</span>
                 <a
                   href="https://www.instagram.com/ashok_yadav_xerox_distance_edu/"
@@ -172,6 +188,7 @@ export default function Navbar() {
                 </a>
               </div>
 
+              {/* Mobile Direct Action Buttons */}
               <div className="flex gap-3 mt-2 pt-3 border-t border-slate-100">
                 <a
                   href="tel:+919963095103"
