@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Phone, MessageCircle, MapPin, Clock } from "lucide-react";
 
 // Inline SVG for social icons
@@ -26,29 +27,31 @@ export default function Footer() {
     <footer className="bg-[#0B132B] text-white border-t border-slate-800">
       <div className="max-w-7xl 2xl:max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 mb-14">
-          {/* Brand & Mission: 4 cols */}
+          {/* Brand & Leadership: 4 cols */}
           <div className="lg:col-span-4 flex flex-col justify-between">
             <div>
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center font-black text-base shadow-xs">
+              <Link href="/" className="inline-flex items-center gap-3 mb-4 group">
+                <div className="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center font-black text-base shadow-xs group-hover:scale-105 transition-transform">
                   AY
                 </div>
                 <div>
-                  <div className="text-xl font-extrabold text-white tracking-tight">Ashok Yadav</div>
+                  <div className="text-xl font-extrabold text-white tracking-tight group-hover:text-blue-300 transition-colors">
+                    Ashok Yadav
+                  </div>
                   <div className="text-[#F59E0B] font-bold text-xs tracking-wider uppercase">
                     Study Hall · Xerox · Distance Edu
                   </div>
                 </div>
-              </div>
+              </Link>
               <p className="text-slate-400 text-sm leading-relaxed mb-4 max-w-sm">
-                Kadapa's most trusted educational hub — Study Hall, 24-Hour Xerox, Distance Education admissions, and Digital Studio headed by <strong className="text-white">Dr. Ashok Yadav, MBA</strong>.
+                Kadapa's most trusted educational hub — Study Hall (5 AM–11 PM), 24-Hour Xerox, Distance Education admissions, and Digital Classroom Studio headed by <strong className="text-white font-bold">Dr. Ashok Yadav, MBA</strong>.
               </p>
               <p className="text-slate-500 text-xs mb-6">
-                Serving students, exam aspirants, and working professionals since 2018 at Industrial Estate, RIMS Road.
+                Serving students, competitive exam aspirants, and working professionals since 2018 at Industrial Estate, RIMS Road.
               </p>
             </div>
 
-            {/* Social Icons with Official Links */}
+            {/* Social Icons */}
             <div className="flex items-center gap-3">
               <a
                 href="https://wa.me/919963095103"
@@ -89,12 +92,13 @@ export default function Footer() {
               Services Directory
             </h4>
             <ul className="space-y-3 text-slate-400 text-sm">
-              <li><a href="#study-hall" className="hover:text-white transition-colors">AC Study Hall & Reading Rooms</a></li>
-              <li><a href="#xerox" className="hover:text-white transition-colors">24-Hour Photocopying & Jumbo Print</a></li>
-              <li><a href="#distance-education" className="hover:text-white transition-colors">AU Special Drive Exams 2026</a></li>
-              <li><a href="#distance-education" className="hover:text-white transition-colors">C.LI.SC & B.LI.SC Library Science</a></li>
-              <li><a href="#digital-studio" className="hover:text-white transition-colors">Smart Digital Studio (₹499/hr)</a></li>
-              <li><a href="#materials" className="hover:text-white transition-colors">Competitive Exam Notes & Printing</a></li>
+              <li><Link href="/study-hall" className="hover:text-white transition-colors">AC Study Hall & Reading Rooms</Link></li>
+              <li><Link href="/xerox-printing" className="hover:text-white transition-colors">24-Hour Photocopying & Jumbo Print</Link></li>
+              <li><Link href="/distance-education" className="hover:text-white transition-colors">AU Special Drive Exams 2026</Link></li>
+              <li><Link href="/distance-education" className="hover:text-white transition-colors">C.LI.SC & B.LI.SC Library Science</Link></li>
+              <li><Link href="/digital-studio" className="hover:text-white transition-colors">Smart Digital Studio (₹499/hr)</Link></li>
+              <li><Link href="/materials" className="hover:text-white transition-colors">Competitive Exam Notes & Printing</Link></li>
+              <li><Link href="/reviews" className="hover:text-white transition-colors">Customer Ratings & Reviews</Link></li>
             </ul>
           </div>
 
@@ -150,13 +154,19 @@ export default function Footer() {
                 <MessageCircle size={15} className="text-[#25D366] flex-shrink-0" />
                 <span>WhatsApp: 9963095103</span>
               </a>
-              <div className="pt-2">
-                <a
-                  href="#location"
-                  className="inline-flex items-center gap-1.5 text-xs text-blue-400 hover:text-blue-300 transition-colors font-semibold"
+              <div className="pt-2 flex flex-col gap-1.5">
+                <Link
+                  href="/location"
+                  className="text-xs text-blue-400 hover:text-blue-300 transition-colors font-semibold"
                 >
                   View Location & Directions on Map →
-                </a>
+                </Link>
+                <Link
+                  href="/contact"
+                  className="text-xs text-amber-400 hover:text-amber-300 transition-colors font-semibold"
+                >
+                  Contact Form & Enquiries →
+                </Link>
               </div>
             </div>
           </div>
@@ -170,8 +180,10 @@ export default function Footer() {
           <span>
             Designed & developed by{" "}
             <a
-              href="mailto:momoit.technologies@gmail.com"
-              className="text-slate-300 hover:text-white transition-colors font-bold"
+              href="https://www.momoittechnologies.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-300 hover:text-white transition-colors font-bold underline-offset-2 hover:underline"
             >
               Momo IT Technologies
             </a>

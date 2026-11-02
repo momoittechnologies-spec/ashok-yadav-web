@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import {
   Clock,
   Star,
@@ -74,7 +75,7 @@ const QUICK_SERVICES = [
     icon: BookOpen,
     iconColor: "text-[#1E3A8A]",
     iconBg: "bg-blue-50",
-    href: "#study-hall",
+    href: "/study-hall",
   },
   {
     title: "24-Hour Xerox & Jumbo Print",
@@ -84,7 +85,7 @@ const QUICK_SERVICES = [
     icon: Printer,
     iconColor: "text-amber-600",
     iconBg: "bg-amber-50",
-    href: "#xerox",
+    href: "/xerox-printing",
   },
   {
     title: "Distance Education Hub",
@@ -94,7 +95,7 @@ const QUICK_SERVICES = [
     icon: GraduationCap,
     iconColor: "text-emerald-600",
     iconBg: "bg-emerald-50",
-    href: "#distance-education",
+    href: "/distance-education",
   },
   {
     title: "Smart Digital Classroom Studio",
@@ -104,7 +105,7 @@ const QUICK_SERVICES = [
     icon: Video,
     iconColor: "text-purple-600",
     iconBg: "bg-purple-50",
-    href: "#digital-studio",
+    href: "/digital-studio",
   },
 ];
 
@@ -122,8 +123,8 @@ export default function Hero() {
     return () => clearInterval(id);
   }, []);
 
-  const handleScrollTo = (id: string) => {
-    const el = document.querySelector(id);
+  const handleScrollToOverview = () => {
+    const el = document.getElementById("services-overview");
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
@@ -165,17 +166,21 @@ export default function Hero() {
             {/* Business Logo & Main Headline */}
             <h1 className="flex flex-col items-center lg:items-start leading-tight mb-4 w-full">
               <span className="sr-only">శ్రీ అశోక్ యాదవ్ (Ashok Yadav) - Study Hall & Education Hub Kadapa</span>
-              <div className="relative w-full max-w-[320px] sm:max-w-[420px] md:max-w-[480px] lg:max-w-[520px] xl:max-w-[560px] flex justify-center lg:justify-start py-1">
+              
+              {/* Refined Telugu Logo Presentation */}
+              <div className="relative w-full max-w-[320px] sm:max-w-[420px] md:max-w-[480px] lg:max-w-[520px] xl:max-w-[560px] flex justify-center lg:justify-start mb-2 sm:mb-3">
                 <Image
                   src="/images/sri-ashok-yadav-telugu.png"
                   alt="శ్రీ అశోక్ యాదవ్ - Ashok Yadav"
                   width={973}
                   height={201}
                   priority
-                  className="w-full h-auto object-contain filter drop-shadow-[0_6px_16px_rgba(0,0,0,0.12)] hover:scale-[1.01] transition-transform duration-300"
+                  className="w-full h-auto object-contain filter drop-shadow-[0_4px_12px_rgba(0,0,0,0.12)] hover:scale-[1.01] transition-transform duration-300"
                 />
               </div>
-              <span className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-black text-[#F59E0B] mt-2 tracking-tight">
+
+              {/* Main Heading with Subtle Complementary Amber Stroke & Depth */}
+              <span className="heading-brand-stroke block text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-black tracking-tight leading-tight">
                 Study Hall & Education Hub
               </span>
             </h1>
@@ -186,15 +191,21 @@ export default function Hero() {
             </p>
 
             {/* Address Badge with Pin */}
-            <div className="flex items-center gap-1.5 text-slate-500 text-xs sm:text-sm mb-6 bg-slate-100/70 border border-slate-200/60 px-3.5 py-1.5 rounded-xl">
+            <Link
+              href="/location"
+              className="inline-flex items-center gap-1.5 text-slate-600 hover:text-[#1E3A8A] text-xs sm:text-sm mb-6 bg-slate-100/80 hover:bg-slate-200/70 border border-slate-200/80 px-3.5 py-1.5 rounded-xl transition-colors"
+            >
               <MapPin size={15} className="text-[#1E3A8A] flex-shrink-0" />
               <span>D.No. 43, Industrial Estate, RIMS Road, Kadapa, AP – 516004</span>
-            </div>
+            </Link>
 
             {/* Trust Proof & Social Row */}
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-4 mb-8">
               {/* Study Hall Rating */}
-              <div className="flex items-center gap-2 bg-white rounded-xl px-3.5 py-2 shadow-xs border border-slate-200">
+              <Link
+                href="/reviews"
+                className="flex items-center gap-2 bg-white rounded-xl px-3.5 py-2 shadow-xs border border-slate-200 hover:border-slate-300 transition-colors"
+              >
                 <div className="flex">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} size={13} className="fill-[#F59E0B] text-[#F59E0B]" />
@@ -202,10 +213,13 @@ export default function Hero() {
                 </div>
                 <span className="font-extrabold text-slate-900 text-xs sm:text-sm">5.0</span>
                 <span className="text-slate-500 text-xs">Study Hall (92)</span>
-              </div>
+              </Link>
 
               {/* Xerox Rating */}
-              <div className="flex items-center gap-2 bg-white rounded-xl px-3.5 py-2 shadow-xs border border-slate-200">
+              <Link
+                href="/reviews"
+                className="flex items-center gap-2 bg-white rounded-xl px-3.5 py-2 shadow-xs border border-slate-200 hover:border-slate-300 transition-colors"
+              >
                 <div className="flex">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} size={13} className="fill-[#F59E0B] text-[#F59E0B]" />
@@ -213,7 +227,7 @@ export default function Hero() {
                 </div>
                 <span className="font-extrabold text-slate-900 text-xs sm:text-sm">4.9</span>
                 <span className="text-slate-500 text-xs">Xerox (1,384+)</span>
-              </div>
+              </Link>
 
               {/* Social Channels */}
               <div className="flex items-center gap-2">
@@ -269,7 +283,7 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right Column: Interactive Quick-Service Portal Hub */}
+          {/* Right Column: Interactive Quick-Service Directory Hub */}
           <div className="lg:col-span-5 w-full">
             <div className="bg-white/95 backdrop-blur-md rounded-3xl p-5 sm:p-7 border border-slate-200/90 shadow-xl relative overflow-hidden">
               <div className="flex items-center justify-between pb-4 mb-4 border-b border-slate-100">
@@ -278,7 +292,7 @@ export default function Hero() {
                     Quick Service Directory
                   </h2>
                   <p className="text-xs text-slate-500">
-                    Select a service to view full details & pricing
+                    Select a service to view full dedicated page & details
                   </p>
                 </div>
                 <span className="text-[11px] font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full border border-blue-100">
@@ -286,13 +300,13 @@ export default function Hero() {
                 </span>
               </div>
 
-              {/* Service Cards Stack */}
+              {/* Service Cards Stack with Next.js Links */}
               <div className="space-y-3">
                 {QUICK_SERVICES.map((s) => (
-                  <button
+                  <Link
                     key={s.title}
-                    onClick={() => handleScrollTo(s.href)}
-                    className="w-full flex items-start gap-3.5 p-3.5 rounded-2xl bg-slate-50 hover:bg-blue-50/50 border border-slate-200/70 hover:border-[#1E3A8A]/30 transition-all text-left group cursor-pointer"
+                    href={s.href}
+                    className="w-full flex items-start gap-3.5 p-3.5 rounded-2xl bg-slate-50 hover:bg-blue-50/50 border border-slate-200/70 hover:border-[#1E3A8A]/30 transition-all text-left group"
                   >
                     <div className={`w-11 h-11 rounded-xl ${s.iconBg} flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform`}>
                       <s.icon size={20} className={s.iconColor} />
@@ -311,13 +325,15 @@ export default function Hero() {
                       </p>
                     </div>
                     <ArrowRight size={15} className="text-slate-400 group-hover:text-[#1E3A8A] group-hover:translate-x-0.5 transition-all mt-1 flex-shrink-0" />
-                  </button>
+                  </Link>
                 ))}
               </div>
 
               {/* Card Footer Banner */}
               <div className="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between gap-3 text-xs">
-                <span className="text-slate-500">Need immediate help?</span>
+                <Link href="/contact" className="text-slate-500 hover:text-slate-800 font-medium">
+                  Need admissions assistance?
+                </Link>
                 <a
                   href="https://wa.me/919963095103?text=Hi%2C%20I%20am%20looking%20for%20admissions%20or%20desk%20booking%20at%20Ashok%20Yadav%20Study%20Hall."
                   target="_blank"
@@ -335,11 +351,11 @@ export default function Hero() {
         {/* Scroll Indicator */}
         <div className="mt-10 lg:mt-14 flex justify-center">
           <button
-            onClick={() => handleScrollTo("#study-hall")}
-            aria-label="Scroll to services"
+            onClick={handleScrollToOverview}
+            aria-label="Scroll to services overview"
             className="flex flex-col items-center gap-1 text-slate-400 hover:text-[#1E3A8A] transition-colors cursor-pointer group"
           >
-            <span className="text-xs font-semibold tracking-wide">Explore All Facilities & Admission Details</span>
+            <span className="text-xs font-semibold tracking-wide">Explore All Facilities & Services Below</span>
             <ChevronDown size={18} className="animate-bounce group-hover:text-[#1E3A8A]" />
           </button>
         </div>

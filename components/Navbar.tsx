@@ -1,6 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X, Phone, MessageCircle } from "lucide-react";
 
 // Inline SVG for social icons
@@ -23,52 +25,43 @@ function FacebookIcon({ size = 16 }: { size?: number }) {
 }
 
 const NAV_LINKS = [
-  { label: "Study Hall", href: "#study-hall" },
-  { label: "Xerox & Print", href: "#xerox" },
-  { label: "Distance Edu", href: "#distance-education" },
-  { label: "Digital Studio", href: "#digital-studio" },
-  { label: "Materials", href: "#materials" },
-  { label: "Reviews", href: "#reviews" },
-  { label: "Location", href: "#location" },
+  { label: "Home", href: "/" },
+  { label: "Study Hall", href: "/study-hall" },
+  { label: "Xerox & Print", href: "/xerox-printing" },
+  { label: "Distance Education", href: "/distance-education" },
+  { label: "Digital Studio", href: "/digital-studio" },
+  { label: "Reviews", href: "/reviews" },
+  { label: "Location", href: "/location" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  const handleNavClick = (href: string) => {
-    setOpen(false);
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+  const isLinkActive = (href: string) => {
+    if (href === "/") {
+      return pathname === "/";
+    }
+    return pathname.startsWith(href);
   };
 
   return (
     <>
-      <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? "bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-200"
-            : "bg-white/85 backdrop-blur-sm border-b border-slate-100"
-        }`}
-      >
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-xs border-b border-slate-200/90 transition-all">
         <div className="max-w-7xl 2xl:max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
-          <div className="flex items-center justify-between h-18 md:h-20 gap-4">
+          <div className="flex items-center justify-between h-18 md:h-20 gap-3">
             {/* Logo & Brand Identity */}
-            <div
-              className="flex items-center gap-3 cursor-pointer group flex-shrink-0"
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            <Link
+              href="/"
+              className="flex items-center gap-3 group flex-shrink-0"
+              onClick={() => setOpen(false)}
             >
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#1E3A8A] to-blue-700 text-white flex items-center justify-center font-black text-base shadow-sm group-hover:scale-105 transition-transform flex-shrink-0">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#1E3A8A] to-blue-700 text-white flex items-center justify-center font-black text-base shadow-xs group-hover:scale-105 transition-transform flex-shrink-0">
                 AY
               </div>
               <div className="flex flex-col leading-tight">
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1.5">
                   <span className="text-[#1E3A8A] font-extrabold text-base sm:text-lg tracking-tight group-hover:text-blue-700 transition-colors">
                     Ashok Yadav
                   </span>
@@ -80,19 +73,26 @@ export default function Navbar() {
                   Study Hall · Xerox · Distance Edu
                 </span>
               </div>
-            </div>
+            </Link>
 
             {/* Desktop Navigation Links */}
-            <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
-              {NAV_LINKS.map((link) => (
-                <button
-                  key={link.href}
-                  onClick={() => handleNavClick(link.href)}
-                  className="text-slate-600 hover:text-[#1E3A8A] hover:bg-slate-100/80 font-medium text-xs xl:text-sm px-3 py-2 rounded-lg transition-all cursor-pointer whitespace-nowrap"
-                >
-                  {link.label}
-                </button>
-              ))}
+            <nav className="hidden xl:flex items-center gap-1 2xl:gap-1.5">
+              {NAV_LINKS.map((link) => {
+                const active = isLinkActive(link.href);
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={`font-semibold text-xs 2xl:text-sm px-2.5 2xl:px-3 py-2 rounded-xl transition-all whitespace-nowrap ${
+                      active
+                        ? "text-[#1E3A8A] bg-blue-50/90 shadow-2xs font-bold"
+                        : "text-slate-600 hover:text-[#1E3A8A] hover:bg-slate-100/80"
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
             </nav>
 
             {/* Desktop Quick Actions & Social Icons */}
@@ -124,7 +124,7 @@ export default function Navbar() {
               {/* Call Now */}
               <a
                 href="tel:+919963095103"
-                className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-slate-200 bg-white text-slate-800 font-semibold text-xs xl:text-sm hover:border-[#1E3A8A] hover:text-[#1E3A8A] hover:bg-blue-50/50 shadow-sm transition-all"
+                className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-slate-200 bg-white text-slate-800 font-semibold text-xs xl:text-sm hover:border-[#1E3A8A] hover:text-[#1E3A8A] hover:bg-blue-50/50 shadow-xs transition-all"
               >
                 <Phone size={14} className="text-[#1E3A8A]" />
                 <span>Call Now</span>
@@ -135,7 +135,7 @@ export default function Navbar() {
                 href="https://wa.me/919963095103?text=Hi%2C%20I%20want%20to%20enquire%20about%20Ashok%20Yadav%20Study%20Hall%20%2F%20Distance%20Education%20services"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#25D366] text-white font-semibold text-xs xl:text-sm hover:bg-[#128C7E] shadow-sm hover:shadow transition-all"
+                className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#25D366] text-white font-semibold text-xs xl:text-sm hover:bg-[#128C7E] shadow-xs hover:shadow transition-all"
               >
                 <MessageCircle size={15} />
                 <span>WhatsApp</span>
@@ -146,7 +146,7 @@ export default function Navbar() {
             <button
               onClick={() => setOpen(!open)}
               aria-label="Toggle navigation menu"
-              className="lg:hidden p-2 rounded-xl text-slate-700 hover:bg-slate-100 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
+              className="xl:hidden p-2 rounded-xl text-slate-700 hover:bg-slate-100 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
             >
               {open ? <X size={22} /> : <Menu size={22} />}
             </button>
@@ -155,17 +155,26 @@ export default function Navbar() {
 
         {/* Mobile Navigation Drawer */}
         {open && (
-          <div className="lg:hidden bg-white border-t border-slate-200 shadow-xl max-h-[85vh] overflow-y-auto">
+          <div className="xl:hidden bg-white border-t border-slate-200 shadow-xl max-h-[85vh] overflow-y-auto">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex flex-col gap-1">
-              {NAV_LINKS.map((link) => (
-                <button
-                  key={link.href}
-                  onClick={() => handleNavClick(link.href)}
-                  className="text-left px-4 py-2.5 rounded-xl text-slate-700 hover:bg-slate-50 hover:text-[#1E3A8A] font-medium text-base transition-colors min-h-[44px]"
-                >
-                  {link.label}
-                </button>
-              ))}
+              {NAV_LINKS.map((link) => {
+                const active = isLinkActive(link.href);
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setOpen(false)}
+                    className={`text-left px-4 py-3 rounded-xl font-semibold text-base transition-colors min-h-[44px] flex items-center justify-between ${
+                      active
+                        ? "text-[#1E3A8A] bg-blue-50/90 font-bold"
+                        : "text-slate-700 hover:bg-slate-50 hover:text-[#1E3A8A]"
+                    }`}
+                  >
+                    <span>{link.label}</span>
+                    {active && <span className="w-2 h-2 rounded-full bg-[#1E3A8A]" />}
+                  </Link>
+                );
+              })}
 
               {/* Social Media Row in Mobile */}
               <div className="flex items-center gap-3 px-4 py-3 my-1 border-t border-slate-100">
