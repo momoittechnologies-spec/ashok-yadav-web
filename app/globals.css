@@ -79,3 +79,60 @@ body {
     -webkit-text-stroke: 1.5px #B45309;
   }
 }
+
+/* Telugu 3D Display Headline (శ్రీ అశోక్ యాదవ్) */
+.hero-telugu-title {
+  font-family: var(--font-baloo-telugu), "Baloo Tammudu 2", cursive, sans-serif;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: 0.015em;
+  word-spacing: 0.08em;
+}
+
+.hero-telugu-stroke {
+  -webkit-text-stroke: 4.5px #000000;
+  text-shadow: 
+    1px 1px 0 #000000,
+    2px 2px 0 #000000,
+    1px 3px 6px rgba(0, 0, 0, 0.28);
+}
+
+@media (min-width: 640px) {
+  .hero-telugu-stroke {
+    -webkit-text-stroke: 6.5px #000000;
+    text-shadow: 
+      1px 1px 0 #000000,
+      2px 2px 0 #000000,
+      3px 3px 0 #000000,
+      4px 4px 0 #000000,
+      1px 5px 12px rgba(0, 0, 0, 0.3);
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-telugu-stroke {
+    -webkit-text-stroke: 8px #000000;
+    text-shadow: 
+      1px 1px 0 #000000,
+      2px 2px 0 #000000,
+      3px 3px 0 #000000,
+      4px 4px 0 #000000,
+      5px 5px 0 #000000,
+      2px 6px 14px rgba(0, 0, 0, 0.32);
+  }
+}
+
+.hero-telugu-fill {
+  background: linear-gradient(
+    180deg,
+    #FFFFFF 0%,
+    #FFFFFF 24%,
+    #FFF9C4 34%,
+    #FFEA00 45%,
+    #FFD600 58%,
+    #F59E0B 72%,
+    #D97706 82%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

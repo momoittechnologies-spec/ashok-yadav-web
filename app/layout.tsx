@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist } from "next/font/google";
+import { Geist, Baloo_Tammudu_2 } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import MobileActionBar from "@/components/MobileActionBar";
@@ -8,6 +8,13 @@ import "./globals.css";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const balooTammudu2 = Baloo_Tammudu_2({
+  variable: "--font-baloo-telugu",
+  weight: ["700", "800"],
+  subsets: ["telugu"],
   display: "swap",
 });
 
@@ -112,7 +119,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${balooTammudu2.variable} h-full antialiased`}
       style={{ colorScheme: "light" }}
     >
       <head>
