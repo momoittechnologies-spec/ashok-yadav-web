@@ -28,6 +28,7 @@
 html {
   color-scheme: light;
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -36,6 +37,8 @@ body {
   font-family: var(--font-geist-sans), "Inter", Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 /* Custom scrollbar */
@@ -65,17 +68,22 @@ body {
   scroll-margin-top: 80px;
 }
 
-
-/* Brand Heading Enhancement with Subtle Complementary Stroke */
-.heading-brand-stroke {
+/* Hero Brand Headline - Clean, Stroke-Free with Soft Ambient Depth */
+.heading-brand-title {
   color: #F59E0B;
-  -webkit-text-stroke: 1.2px #B45309;
-  text-shadow: 0 2px 4px rgba(180, 83, 9, 0.2), 0 1px 2px rgba(0, 0, 0, 0.08);
-  letter-spacing: -0.02em;
+  text-shadow: 
+    0 2px 4px rgba(245, 158, 11, 0.25),
+    0 8px 24px rgba(217, 119, 6, 0.15),
+    0 1px 2px rgba(15, 23, 42, 0.05);
+  letter-spacing: -0.025em;
+  word-break: break-word;
 }
 
-@media (min-width: 768px) {
-  .heading-brand-stroke {
-    -webkit-text-stroke: 1.5px #B45309;
-  }
+/* Subtle gradient variant for enhanced depth */
+.heading-brand-gradient {
+  background: linear-gradient(135deg, #F59E0B 0%, #D97706 65%, #B45309 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 3px 6px rgba(217, 119, 6, 0.22));
+  letter-spacing: -0.025em;
 }

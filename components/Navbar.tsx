@@ -54,14 +54,14 @@ export default function Navbar() {
             {/* Logo & Brand Identity */}
             <Link
               href="/"
-              className="flex items-center gap-3 group flex-shrink-0"
+              className="flex items-center gap-2.5 sm:gap-3 group flex-shrink-0"
               onClick={() => setOpen(false)}
             >
               <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#1E3A8A] to-blue-700 text-white flex items-center justify-center font-black text-base shadow-xs group-hover:scale-105 transition-transform flex-shrink-0">
                 AY
               </div>
               <div className="flex flex-col leading-tight">
-                <div className="flex items-center gap-1.5">
+                <div className="flex items-center gap-1.5 whitespace-nowrap">
                   <span className="text-[#1E3A8A] font-extrabold text-base sm:text-lg tracking-tight group-hover:text-blue-700 transition-colors">
                     Ashok Yadav
                   </span>
@@ -69,7 +69,7 @@ export default function Navbar() {
                     Kadapa
                   </span>
                 </div>
-                <span className="text-[#F59E0B] font-semibold text-xs tracking-wider uppercase">
+                <span className="text-[#F59E0B] font-semibold text-[10px] sm:text-xs tracking-wider uppercase whitespace-nowrap">
                   Study Hall · Xerox · Distance Edu
                 </span>
               </div>

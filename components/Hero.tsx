@@ -179,10 +179,17 @@ export default function Hero() {
                 />
               </div>
 
-              {/* Main Heading with Subtle Complementary Amber Stroke & Depth */}
-              <span className="heading-brand-stroke block text-2xl sm:text-4xl md:text-5xl xl:text-6xl font-black tracking-tight leading-tight">
-                Study Hall & Education Hub
-              </span>
+              {/* Main Heading without stroke, with subtle background shadow aura & responsive fit */}
+              <div className="relative block max-w-full mt-1 mb-2">
+                {/* Subtle soft ambient background shadow aura */}
+                <div
+                  aria-hidden="true"
+                  className="absolute -inset-x-4 -inset-y-2 bg-gradient-to-r from-amber-400/20 via-amber-300/10 to-transparent rounded-3xl blur-xl -z-10 pointer-events-none"
+                />
+                <span className="heading-brand-title block text-2xl xs:text-3xl sm:text-4xl md:text-5xl xl:text-5xl 2xl:text-[3.5rem] font-black tracking-tight leading-[1.15]">
+                  Study Hall &amp; Education Hub
+                </span>
+              </div>
             </h1>
 
             {/* Value Proposition Subtitle */}
@@ -193,10 +200,10 @@ export default function Hero() {
             {/* Address Badge with Pin */}
             <Link
               href="/location"
-              className="inline-flex items-center gap-1.5 text-slate-600 hover:text-[#1E3A8A] text-xs sm:text-sm mb-6 bg-slate-100/80 hover:bg-slate-200/70 border border-slate-200/80 px-3.5 py-1.5 rounded-xl transition-colors"
+              className="inline-flex items-center gap-1.5 text-slate-600 hover:text-[#1E3A8A] text-xs sm:text-sm mb-6 bg-slate-100/80 hover:bg-slate-200/70 border border-slate-200/80 px-3.5 py-1.5 rounded-xl transition-colors max-w-full"
             >
               <MapPin size={15} className="text-[#1E3A8A] flex-shrink-0" />
-              <span>D.No. 43, Industrial Estate, RIMS Road, Kadapa, AP – 516004</span>
+              <span className="truncate">D.No. 43, Industrial Estate, RIMS Road, Kadapa, AP – 516004</span>
             </Link>
 
             {/* Trust Proof & Social Row */}
